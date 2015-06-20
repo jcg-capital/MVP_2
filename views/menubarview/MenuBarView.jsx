@@ -1,11 +1,13 @@
+'use strict';
+
 var MenuBar = React.createClass({
     navstyle: {
-        'background-color': '#CCC',
+        'backgroundColor': '#CCC',
         'width': '42.75em',
         'height': '1.3em', 
     },
     style: {
-        'a': {'text-decoration': 'none',
+        'a': {
             'color': '#FFF',
             'font-family': 'Arial',
             'text-decoration': 'none',
@@ -22,7 +24,7 @@ var MenuBar = React.createClass({
             'list-style':'none',
             'width':'60px',
             'text-align':'center',
-            'background-color':'#999',
+            'backgroundColor':'#999',
             'padding':'0px',
             'margin':'0px'
         },
@@ -41,7 +43,7 @@ var MenuBar = React.createClass({
     getDefaultProps: function () {
         return {
             config: []
-        }
+        };
     },
     openDropdown: function (id) {
         // console.log('open!');
@@ -59,8 +61,8 @@ var MenuBar = React.createClass({
     },
     render: function () {
         var config = this.props.config;
-        var style = this.style
-
+        var style = this.style;
+        console.log('MenuBarView.js: config: ', this.props)
         var items = config.map(function (item, index) {
             var children, dropdown;
             if (item.children) {
