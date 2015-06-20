@@ -15,7 +15,7 @@ gulp.task('jsx-transform', function() {
     .pipe(react()) // Transform all jsx files in 
     .on('error', gutil.log) // log any errors
     .pipe(debug({title: 'After react():'}))
-    .pipe(concat('concat-jsxtransform-build.js')) // conncat all into this file
+    .pipe(concat('concat-jsxtransform-build')) // conncat all into this file
     .pipe(gulp.dest('dist/build')) // place concat file here
 })
 
