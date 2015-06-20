@@ -4,7 +4,8 @@
   "description": "Money never sleeps",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm install -g gulp"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,6 @@
   "homepage": "https://github.com/jcg-capital/MVP",
   "dependencies": {
     "body-parser": "^1.13.1",
-    "browserify": "^10.2.4",
     "express": "^4.12.4",
     "flux": "^2.0.3", 
     "node": "0.0.0",
