@@ -106,7 +106,5 @@ var MenuBar = React.createClass({
     }
 });
 
-
-
 // React.render(<MenuBar config={ menuitems } />, document.getElementById('jcgCapitalMenu'));
 module.exports = MenuBar

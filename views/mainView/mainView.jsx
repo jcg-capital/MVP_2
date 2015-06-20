@@ -1,11 +1,11 @@
 /** @jsx React.DOM */
 'use strict';
 
-var MenuBar = require('../menubarview/MenuBarView')
-var MenuItems = require('../menubarview/MenuItems')
+var MenuBar = require('./menubarview/MenuBarView.js')
+var MenuItems = require('./menubarview/MenuItems.js')
 
-var Chart = require('../graphview/chart')
-var ChartOptions = require('../graphview/chartoptions')
+var Chart = require('./graphview/chart')
+var ChartOptions = require('./graphview/chartoptions')
 
 
 var App = React.createClass({
@@ -17,5 +17,5 @@ var App = React.createClass({
   }
 });
 
-React.render(React.createElement(MenuBar, MenuItems), document.getElementById('THEAPP'))
+// React.render(React.createElement(MenuBar, MenuItems), document.getElementById('THEAPP'))
 React.render(<App />, document.body);

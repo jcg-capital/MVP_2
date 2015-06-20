@@ -20,7 +20,7 @@
   "dependencies": {
     "body-parser": "^1.13.1",
     "express": "^4.12.4",
-    "flux": "^2.0.3", 
+    "flux": "^2.0.3",
     "node": "0.0.0",
     "react": "^0.13.3",
     "requirejs": "^2.1.18",
@@ -51,7 +51,7 @@
     "node-sass": "^3.2.0",
     "quandl": "0.0.4",
     "reactify": "^1.1.1",
-    "run-sequence": "^1.1.0",
+    "run-sequence": "^1.1.1",
     "sass-loader": "^1.0.2",
     "through2": "^2.0.0",
     "vinyl-buffer": "^1.0.0",
