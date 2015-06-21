@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <!-- Styling CSS for menubar -->
     <link rel="stylesheet" href="styles.css"></link>
+
+    <!-- Bootstrap? -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- react/jquery perhaps pull this in with bundle.js require browserify gulp instead? -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- highcharts pull this in with bundle.js require browserify gulp instead?-->
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/data.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
   </head>
   <body>
+
+    <!-- mainView should eventually mount here? -->
     <div id='main'></div>
+
+    <!-- div id='main' must be mounted before the bundle -->
     <script src="bundle.js" type="text/javascript"></script> 
   </body>
 </html>
