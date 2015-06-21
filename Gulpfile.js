@@ -1,74 +1,95 @@
-var gulp = require('gulp')
-, browserify = require('browserify')
-, browserSync = require('browser-sync')
-, gutil = require('gulp-util')
-, debug = require('gulp-debug')
-, concat = require('gulp-concat')
-, react = require('gulp-react')
-, source = require("vinyl-source-stream")
-, runSequence = require('run-sequence')
-// CONCAT them into
-// dist/build/concat-jsxtransform-build.js
-build_path = 'dist'
-fp = 'cj_build.js'
-gulp.task('jsx-transform', function() {
-  return gulp.src('views/**/*.jsx') // all jsx files in views/folder_name
-      .pipe(debug({title: 'COMPILE jsx:'}))
-    .pipe(react()) // Transform all jsx files in
-      .on('error', gutil.log) // log any errors
-      .pipe(debug({title: 'After react():'}))
-    .pipe(gulp.dest(build_path))
-    .pipe(concat(fp)) // conncat all into this file
-      .on('error', gutil.log) // log any errors
-    .pipe(gulp.dest(build_path)) // place concat file here
-})
+'use strict';
+var gulp      = require('gulp'),
+  browserify  = require('browserify'),
+  browserSync = require('browser-sync'),
+  gutil       = require('gulp-util'),
+  debug       = require('gulp-debug'),
+  concat      = require('gulp-concat'),
+  react       = require('gulp-react'),
+  source      = require('vinyl-source-stream'),
+  runSequence = require('run-sequence');
 
+// ***********************************//
+// Transform the jsx files to js 
+// Concatenate the them into
+// buildpath/fp
+// ***********************************//
+var buildPath = 'dist';
+var fp = 'cj_build.js';
+
+// ***********************************//
+// IIFE the buildPath/fp into bundlePath
+// ***********************************//
+var bundlePath = 'client/bundle.js';
+var jsxPaths = 'views/**/*.jsx';
+// ***********************************//
+// Run the transformation and concatenation
+// ***********************************//
+gulp.task('jsx-transform', function() {
+  return gulp.src(jsxPaths)                   // jsx file paths
+      .pipe(debug({title: 'COMPILE jsx:'}))   // console log
+    .pipe(react())                            // Transform jsx in pipline
+      .on('error', gutil.log)                 // log any errors
+      .pipe(debug({title: 'After react():'})) // console log
+    .pipe(gulp.dest(buildPath))               // after jsx transform place files here
+    .pipe(concat(fp))                         // conncat all transformed jsx into to fp
+      .on('error', gutil.log)                 // log any errors
+    .pipe(gulp.dest(buildPath));              // place the concatenated file here
+});
+
+// ***********************************//
+// IIFE the concatenated file of transformed jsx
+//  so we can require modules
+// ***********************************//
 gulp.task('browserify', function(){
   var b = browserify();
-  console.log('Trying to browserify: ',[build_path,fp].join('/'))
-  b.add([build_path,fp].join('/'));
-  //.on('error', gutil.log) // log any errors
+  console.log('Trying to browserify: ',[buildPath,fp].join('/'));
+  b.add([buildPath,fp].join('/'));
   return b.bundle()
-    .pipe(source('client/bundle.js'))
+    .pipe(source(bundlePath)) // Place the bundle here
     .pipe(gulp.dest('.'));
 });
 
+
+// ***********************************//
+// Reload browser-sync
+// ***********************************//
 gulp.task('bs-reload', function () {
   browserSync.reload();
 });
 
+// ***********************************//
+// Setup browser-sync ... localhost:3000
+// ***********************************//
 gulp.task('browser-sync', function() {
   browserSync.init(null, {
     server: {
-      baseDir: "client"
+      baseDir: 'client'
     }
   });
 });
 
+// ***********************************//
+// Run synchronously the build process
+// ***********************************//
 gulp.task('build', function(){
-  runSequence('jsx-transform', 'browserify', 'bs-reload')
-})
+  // Run in order the jsx-transform, and then IIFE the conctenated file
+  // then reload browser-sync
+  runSequence('jsx-transform', 'browserify', 'bs-reload');
+});
 
+
+// ***********************************//
+// By default 'gulp' ... build and then watch
+// ***********************************//
 gulp.task('default', function(){
-  runSequence('build', 'watch','browser-sync')
-})
+  runSequence('build', 'watch','browser-sync');
+});
 
+// ***********************************//
+// Watch views/folders and dist/folders
+// ***********************************//
 gulp.task('watch', function() {
-    gulp.watch('views/**/*.*', ['build'])
-    gulp.watch('dist/**/*', ['bs-reload'])
-})
-
-
-// // takes in a callback so the engine knows when it'll be done
-// gulp.task('one', function(cb) {
-//   // do stuff -- async or otherwise
-//   cb(err); // if err is not null and not undefined, the orchestration will stop, and 'two' will not run
-// });
-
-// // identifies a dependent task must be complete before this one begins
-// gulp.task('two', ['one'], function() {
-//   // task 'one' is done now
-// });
-
-// gulp.task('default', ['one', 'two']);
-// // alternatively: gulp.task('default', ['two']);
+    gulp.watch('views/**/*.*', ['build']);
+    gulp.watch('dist/**/*', ['bs-reload']);
+});
