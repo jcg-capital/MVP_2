@@ -5,6 +5,7 @@ var MenuBar        = require('./menubarview/MenuBarView.js');
 var MenuItems      = require('./menubarview/MenuItems.js');
 var Chart          = require('./graphview/chart');
 var ChartOptions   = require('./graphview/chartoptions');
+// TODO: complete some extra pages
 var Home           = React.createClass({render:function(){return <h1>Home</h1>}})
 var Errorpage      = React.createClass({render:function(){return <h1>ErrorPage</h1>}});
 //var BootStrap      = require('./assets/bootstrap');
@@ -16,6 +17,11 @@ var Route          = Router.Route;
 var DefaultRoute   = Router.DefaultRoute;
 //var RouteHandler   = Router.RouteHandler;
 
+
+// ***********************************//
+// Create the main App class 
+// This will most likely change
+// ***********************************//
 var App = React.createClass({
   render: function(){
     console.log('Inside App');
@@ -29,6 +35,10 @@ var App = React.createClass({
   }
 });
 
+// ***********************************//
+// some example routes to be used with react-router
+// FIXME: these exactly work?
+// ***********************************//
 var routes = (
   <Route name='app' path='/' handler={ App } >
     <Route name='chart' path='/chart' handler={ Chart } />
@@ -39,7 +49,9 @@ var routes = (
 );
 
 
-
+// ***********************************//
+// see https://github.com/idealists/idea-list/blob/master/client/app.js
+// ***********************************//
 Router.run(routes, function (Handler) {
     React.render(<Handler MenuItems />, document.getElementById('main'));
 });
