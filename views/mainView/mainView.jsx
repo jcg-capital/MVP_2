@@ -1,23 +1,24 @@
 /** @jsx React.DOM */
 'use strict';
-var React          = require('react/addons');
+//var React          = require('react');
 var MenuBar        = require('./menubarview/MenuBarView.js');
 var MenuItems      = require('./menubarview/MenuItems.js');
 var Chart          = require('./graphview/chart');
 var ChartOptions   = require('./graphview/chartoptions');
-
-var BootStrap      = require('./assets/bootstrap');
+var Home           = React.createClass({render:function(){return <h1>Home</h1>}})
+var Errorpage      = React.createClass({render:function(){return <h1>ErrorPage</h1>}});
+//var BootStrap      = require('./assets/bootstrap');
 
 var Router         = require('react-router');
 var NotFoundRoute  = Router.NotFoundRoute;
-var Link           = Router.Link;
+//var Link           = Router.Link;
 var Route          = Router.Route;
 var DefaultRoute   = Router.DefaultRoute;
-var RouteHandler   = Router.RouteHandler;
+//var RouteHandler   = Router.RouteHandler;
 
 var App = React.createClass({
   render: function(){
-    console.log(MenuItems);
+    console.log('Inside App');
     return (
       <div>
         <div id='jcgCapitalChart'></div>
@@ -29,22 +30,19 @@ var App = React.createClass({
 });
 
 var routes = (
-  <Route name="app" path="/" handler={App}>
-    <Route name="chart" path="/chart" handler={Chart}>
-    <Route name="menubar" path="/menubar" handler={MenuBar}>
-    <DefaultRoute handler={Home} />
-    <NotFoundRoute handler={Errorpage} />
+  <Route name='app' path='/' handler={ App } >
+    <Route name='chart' path='/chart' handler={ Chart } />
+    <Route name='menubar' path='/menubar' handler={ MenuBar } />
+    <DefaultRoute handler={ Home } />
+    <NotFoundRoute handler={ Errorpage } />
   </Route>
-)
+);
 
 
 
 Router.run(routes, function (Handler) {
-  if (Handler){
-    console.log(Handler);
-    React.render(<Handler />, document.getElementById('main'));
-  }
-})
+    React.render(<Handler MenuItems />, document.getElementById('main'));
+});
 
 
 // React.render(<App />, document.body);
