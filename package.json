@@ -19,11 +19,13 @@
   "homepage": "https://github.com/jcg-capital/MVP",
   "dependencies": {
     "body-parser": "^1.13.1",
+    "codemirror": "^5.3.0",
     "express": "^4.12.4",
     "flux": "^2.0.3",
     "node": "0.0.0",
     "react": "^0.13.3",
     "react-bootstrap": "^0.23.4",
+    "react-codemirror": "^0.1.2",
     "react-router": "^0.13.3",
     "requirejs": "^2.1.18",
     "vinyl-transform": "^1.0.0"

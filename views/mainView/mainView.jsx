@@ -5,6 +5,7 @@ var MenuBar        = require('./menubarview/MenuBarView.js');
 var MenuItems      = require('./menubarview/MenuItems.js');
 var Chart          = require('./graphview/chart');
 var ChartOptions   = require('./graphview/chartoptions');
+var Editor         = require('./codeeditorview/CodeMirror')
 // TODO: complete some extra pages
 var Home           = React.createClass({render:function(){return <h1>Home</h1>}})
 var Errorpage      = React.createClass({render:function(){return <h1>ErrorPage</h1>}});
@@ -27,9 +28,15 @@ var App = React.createClass({
     console.log('Inside App');
     return (
       <div>
-        <div id='jcgCapitalChart'></div>
-        <div id='jcgCapitalMenu'></div>
-        <div id='jcgCapitalEditor'></div>
+        <div id='jcgCapitalChart'>
+          <Chart chartModel={ChartOptions.chartModel} seriesModel={ChartOptions.seriesModel} />
+        </div>
+        <div id='jcgCapitalMenu'>
+          <MenuBar config={MenuItems.config} />
+        </div>
+        <div id='jcgCapitalEditor'>
+          <Editor />
+        </div>
       </div>
     )
   }
@@ -39,24 +46,25 @@ var App = React.createClass({
 // some example routes to be used with react-router
 // FIXME: these exactly work?
 // ***********************************//
-var routes = (
-  <Route name='app' path='/' handler={ App } >
-    <Route name='chart' path='/chart' handler={ Chart } />
-    <Route name='menubar' path='/menubar' handler={ MenuBar } />
-    <DefaultRoute handler={ Home } />
-    <NotFoundRoute handler={ Errorpage } />
-  </Route>
-);
+// var routes = (
+//   <Route name='app' path='/' handler={ App } >
+//     <Route name='chart' path='/chart' handler={ Chart } />
+//     <Route name='menubar' path='/menubar' handler={ MenuBar } />
+//     <DefaultRoute handler={ Home } />
+//     <NotFoundRoute handler={ Errorpage } />
+//   </Route>
+// );
 
 
 // ***********************************//
 // see https://github.com/idealists/idea-list/blob/master/client/app.js
 // ***********************************//
-Router.run(routes, function (Handler) {
-    React.render(<Handler MenuItems />, document.getElementById('main'));
-});
+// Router.run(routes, function (Handler) {
+//     React.render(<Handler MenuItems />, document.getElementById('main'));
+// });
 
 
-// React.render(<App />, document.body);
-// React.render(React.createElement(Chart, ChartOptions), document.getElementById('jcgCapitalChart'));
-// React.render(<MenuBar config={MenuItems.config} />, document.getElementById('jcgCapitalMenu'));
+React.render(<App />, document.body);
+//React.render(React.createElement(Chart, ChartOptions), document.getElementById('jcgCapitalChart'));
+//React.render(<MenuBar config={MenuItems.config} />, document.getElementById('jcgCapitalMenu'));
+//React.render(<Editor />, document.getElementById('jcgCapitalEditor'));
