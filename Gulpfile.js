@@ -14,7 +14,7 @@ var gulp      = require('gulp'),
 // Concatenate the them into
 // buildpath/fp
 // ***********************************//
-var buildPath = 'dist';
+var buildPath = 'build';
 var fp = 'cj_build.js';
 
 // ***********************************//
@@ -87,9 +87,9 @@ gulp.task('default', function(){
 });
 
 // ***********************************//
-// Watch views/folders and dist/folders
+// Watch views/folders and build/folders
 // ***********************************//
 gulp.task('watch', function() {
     gulp.watch('views/**/*.*', ['build']);
-    gulp.watch('dist/**/*', ['bs-reload']);
+    gulp.watch(buildPath+'/**/*', ['bs-reload']);
 });
