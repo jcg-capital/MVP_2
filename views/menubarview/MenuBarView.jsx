@@ -14,14 +14,13 @@ var MenuBar = React.createClass({
         },
         'navigation__item': {
             'display': 'inline-block',
-            'vertical-align': 'center',
+            'verticalAlign': 'center',
             'top': '0px',
             'margin': '0px 5px'
         },
         'navigation__dropdown': {
             'display':'none',
             'position':'absolute',
-            'list-style':'none',
             'width':'60px',
             'text-align':'center',
             'backgroundColor':'#999',
@@ -29,7 +28,7 @@ var MenuBar = React.createClass({
             'margin':'0px'
         },
         'navigation__dropdown__link': {
-            'list-style':'none',
+            'listStyle':'none',
         },
         'navigation__dropdown--open': {
             'display':'block',
@@ -64,11 +63,12 @@ var MenuBar = React.createClass({
         var style = this.style;
         console.log('MenuBarView.js: config: ', this.props)
         var items = config.map(function (item, index) {
+            console.log('MenuBarView.jsx: item.id: ', item.id)
             var children, dropdown;
             if (item.children) {
                 children = item.children.map(function (child) {
                     return (
-                        <li style={ style["navigation__dropdown__item"] }>
+                        <li key={ child.text } style={ style["navigation__dropdown__item"] }>
                             <a style={ style["navigation__dropdown__link"] } href='#!'>
                                 { child.text }
                             </a>
@@ -90,7 +90,7 @@ var MenuBar = React.createClass({
                 );
             }
             return (
-                <li style={ style["navigation__item"] } onMouseOut={ this.closeDropdown } onMouseOver={ this.openDropdown.bind(this, index) }>
+                <li key={ item.text } style={ style["navigation__item"] } onMouseOut={ this.closeDropdown } onMouseOver={ this.openDropdown.bind(this, index) }>
                     <a style={style["navigation__link"]} href='#!'>
                         { item.text }
                     </a>
