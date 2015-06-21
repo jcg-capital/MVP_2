@@ -1,1 +1,3 @@
-module.exports = 'hello from bootsrap.jsx'
+var BootStrap = require('react-bootstrap')
+
+module.exports = BootStrap
