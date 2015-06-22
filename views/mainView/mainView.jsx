@@ -5,9 +5,9 @@ var MenuBar        = require('./menubarview/MenuBarView.js');
 var MenuItems      = require('./menubarview/MenuItems.js');
 var Chart          = require('./graphview/chart');
 var ChartOptions   = require('./graphview/chartoptions');
+var ContainedModal = require('./mainView/containedmodal.js');
 
-
-//var Editor         = require('./codeeditorview/CodeMirror')
+var Editor         = require('./codeeditorview/CodeMirror')
 // TODO: complete some extra pages
 var Home           = React.createClass({render:function(){return <h1>Home</h1>}})
 var Errorpage      = React.createClass({render:function(){return <h1>ErrorPage</h1>}});
@@ -16,12 +16,12 @@ var Errorpage      = React.createClass({render:function(){return <h1>ErrorPage</
 // BootStrap related elements
 // *******************************//l
 
-var Trigger = BootStrap.Trigger;
-var ModalTrigger          = BootStrap.ModalTrigger;
-var Col = BootStrap.Col;
-var Row = BootStrap.Row;
+
+var ModalTrigger   = BootStrap.ModalTrigger;
+var Col            = BootStrap.Col;
+var Row            = BootStrap.Row;
 var Grids          = BootStrap.Grids;
-var Grid          = BootStrap.Grid;
+var Grid           = BootStrap.Grid;
 var Nav            = BootStrap.Nav;
 var Navbar         = BootStrap.Navbar;
 var BootStrap      = require('./assets/bootstrap');
@@ -64,11 +64,6 @@ var App = React.createClass({
 
   <div>
 
-     <div className="jcg">
-        <div id='jcgCapitalChart'>
-          <Chart chartModel={ChartOptions.chartModel} seriesModel={ChartOptions.seriesModel} />
-        </div>
-      </div>
 
      
      <div>
@@ -86,25 +81,26 @@ var App = React.createClass({
                   <MenuItem eventKey='1'>Action</MenuItem>
                   <MenuItem eventKey='2'>Another action</MenuItem>
               </DropdownButton>
-
-
-               <Button className="editor" bsStyle='primary'>Code Editor</Button>
-
           </Nav>
         </Navbar>
       </div>
 
+     <div className="container">
+        <div id='jcgCapitalChart'>
+          <Chart chartModel={ChartOptions.chartModel} seriesModel={ChartOptions.seriesModel} />
+        </div>
+      </div>
 
-    
-    <div>
-  </div>
+
+
+
   
    
 <Grid>
     <Row className='show-grid'>
       <Col xs={6} md={6}><code> 
-        { <Panel header='Code Editor'>
-                Panel content
+        { <Panel header='Codes Editor'>
+                <Editor />
               </Panel>}
 
 
@@ -115,18 +111,15 @@ var App = React.createClass({
               </Panel>
       } </code></Col>
     </Row>
-
-
   </Grid>
 
-    
-  
- </div>
+  <div id="modal">
+    <ModalTriggerOne />
+  </div>
 
 
 
-
-
+</div>
      
     )
   }
