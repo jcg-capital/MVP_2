@@ -5,7 +5,7 @@ var MenuBar        = require('./menubarview/MenuBarView.js');
 var MenuItems      = require('./menubarview/MenuItems.js');
 var Chart          = require('./graphview/chart');
 var ChartOptions   = require('./graphview/chartoptions');
-var Editor         = require('./codeeditorview/CodeMirror')
+//var Editor         = require('./codeeditorview/CodeMirror')
 // TODO: complete some extra pages
 var Home           = React.createClass({render:function(){return <h1>Home</h1>}})
 var Errorpage      = React.createClass({render:function(){return <h1>ErrorPage</h1>}});
@@ -41,7 +41,7 @@ var DefaultRoute   = Router.DefaultRoute;
 // ***********************************//
 var App = React.createClass({
   items: {
-    nameHere: ( <h3>Panel nameHere</h3>),
+    nameHere: ( <h3>Panel nameHere</h3> ),
     'modalStyle': {
       'position': 'relative',
       'bottom': '0px',
@@ -57,9 +57,7 @@ var App = React.createClass({
         <div id='jcgCapitalMenu'>
           <MenuBar config={MenuItems.config} />
         </div>
-        <div id='jcgCapitalEditor'>
-          <Editor />
-        </div>
+
 {/* Standard button */}
         <ButtonToolbar>
           <Button>Default</Button>
