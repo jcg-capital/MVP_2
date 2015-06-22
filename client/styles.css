@@ -1,4 +1,16 @@
 
+
+ .modal-container {
+position: relative;
+}
+
+.modal-container .modal, .modal-container .modal-backdrop {
+ position: absolute;
+}
+
+
+
+
 #visualisation {
 	margin-left: 100px;
 }

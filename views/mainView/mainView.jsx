@@ -5,6 +5,8 @@ var MenuBar        = require('./menubarview/MenuBarView.js');
 var MenuItems      = require('./menubarview/MenuItems.js');
 var Chart          = require('./graphview/chart');
 var ChartOptions   = require('./graphview/chartoptions');
+
+
 //var Editor         = require('./codeeditorview/CodeMirror')
 // TODO: complete some extra pages
 var Home           = React.createClass({render:function(){return <h1>Home</h1>}})
@@ -12,9 +14,16 @@ var Errorpage      = React.createClass({render:function(){return <h1>ErrorPage</
 
 // *******************************//
 // BootStrap related elements
-// *******************************//
-var Nav = BootStrap.Nav
-var Navbar = BootStrap.Navbar
+// *******************************//l
+
+var Trigger = BootStrap.Trigger;
+var ModalTrigger          = BootStrap.ModalTrigger;
+var Col = BootStrap.Col;
+var Row = BootStrap.Row;
+var Grids          = BootStrap.Grids;
+var Grid          = BootStrap.Grid;
+var Nav            = BootStrap.Nav;
+var Navbar         = BootStrap.Navbar;
 var BootStrap      = require('./assets/bootstrap');
 var ButtonToolbar  = BootStrap.ButtonToolbar;
 var Button         = BootStrap.Button;
@@ -52,140 +61,73 @@ var App = React.createClass({
   render: function(){
     console.log('Inside App');
     return (
-      <div>
+
+  <div>
+
+     <div className="jcg">
         <div id='jcgCapitalChart'>
           <Chart chartModel={ChartOptions.chartModel} seriesModel={ChartOptions.seriesModel} />
         </div>
-        <div id='jcgCapitalMenu'>
-          <MenuBar config={MenuItems.config} />
-        </div>
+      </div>
 
-  {/* NavBar */}
+     
+     <div>
         <Navbar brand={<a href="#">JCG-Capital</a>}>
           <Nav>
-     
-
-          <DropdownButton bsStyle='primary' eventKey={3} title='File'>          
-              <MenuItem eventKey='1'>Action</MenuItem>
-              <MenuItem eventKey='2'>Another action</MenuItem>
-          </DropdownButton>
-          <DropdownButton bsStyle='primary' eventKey={3} title='Edit'>          
-              <MenuItem eventKey='1'>Action</MenuItem>
-              <MenuItem eventKey='2'>Another action</MenuItem>
-          </DropdownButton>
-          <DropdownButton bsStyle='primary' eventKey={3} title='Preferences'>          
-              <MenuItem eventKey='1'>Action</MenuItem>
-              <MenuItem eventKey='2'>Another action</MenuItem>
-          </DropdownButton>
-        </Nav>
-   </Navbar>
+              <DropdownButton bsStyle='primary' eventKey={3} title='File'>          
+                  <MenuItem eventKey='1'>Action</MenuItem>
+                  <MenuItem eventKey='2'>Another action</MenuItem>
+              </DropdownButton>
+              <DropdownButton bsStyle='primary' eventKey={3} title='Edit'>          
+                  <MenuItem eventKey='1'>Action</MenuItem>
+                  <MenuItem eventKey='2'>Another action</MenuItem>
+              </DropdownButton>
+              <DropdownButton bsStyle='primary' eventKey={3} title='Preferences'>          
+                  <MenuItem eventKey='1'>Action</MenuItem>
+                  <MenuItem eventKey='2'>Another action</MenuItem>
+              </DropdownButton>
 
 
-{/* Button Grouping */}
-         <ButtonToolbar>
-            <ButtonGroup>
-              <Button>1</Button>
-              <Button>2</Button>
-              <Button>3</Button>
-              <Button>4</Button>
-            </ButtonGroup>
+               <Button className="editor" bsStyle='primary'>Code Editor</Button>
 
-            <ButtonGroup>
-              <Button>5</Button>
-              <Button>6</Button>
-              <Button>7</Button>
-            </ButtonGroup>
-
-            <ButtonGroup>
-              <Button>8</Button>
-            </ButtonGroup>
-          </ButtonToolbar>
-{/* Two buttons and a dropdown */}
-          <ButtonGroup>
-            <Button>1</Button>
-            <Button>2</Button>
-            <DropdownButton title='Dropdown'>
-              <MenuItem eventKey='1'>Dropdown link</MenuItem>
-              <MenuItem eventKey='2'>Dropdown link</MenuItem>
-            </DropdownButton>
-          </ButtonGroup>
-{/* Vertically Aligned Buttons */}
-          <ButtonGroup vertical>
-            <Button>Button</Button>
-            <Button>Button</Button>
-            <DropdownButton title='Dropdown'>
-              <MenuItem eventKey='1'>Dropdown link</MenuItem>
-              <MenuItem eventKey='2'>Dropdown link</MenuItem>
-            </DropdownButton>
-            <Button>Button</Button>
-            <Button>Button</Button>
-            <DropdownButton title='Dropdown'>
-              <MenuItem eventKey='1'>Dropdown link</MenuItem>
-              <MenuItem eventKey='2'>Dropdown link</MenuItem>
-            </DropdownButton>
-            <DropdownButton title='Dropdown'>
-              <MenuItem eventKey='1'>Dropdown link</MenuItem>
-              <MenuItem eventKey='2'>Dropdown link</MenuItem>
-            </DropdownButton>
-          </ButtonGroup>
-
-
-{/* Panel with header */}
-            <div>
-              <Panel header='Panel heading without nameHere'>
-                Panel content
-              </Panel>
-              <Panel header={this.items.nameHere}>
-                Panel content
-              </Panel>
-            </div>
-
-{/* Accordion example  */}
-            <Accordion>
-              <Panel header='Collapsible Group Item 1' eventKey='1'>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </Panel>
-              <Panel header='Collapsible Group Item 2' eventKey='2'>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </Panel>
-              <Panel header='Collapsible Group Item 3' eventKey='3'>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </Panel>
-            </Accordion>
-
- <form>
-    <Input type='text' label='Text' placeholder='Enter text' />
-    <Input type='email' label='Email Address' placeholder='Enter email' />
-    <Input type='password' label='Password' />
-    <Input type='file' label='File' help='[Optional] Block level help text' />
-    <Input type='checkbox' label='Checkbox' checked readOnly />
-    <Input type='radio' label='Radio' checked readOnly />
-    <Input type='select' label='Select' placeholder='select'>
-      <option value='select'>select</option>
-      <option value='other'>...</option>
-    </Input>
-    <Input type='select' label='Multiple Select' multiple>
-      <option value='select'>select (multiple)</option>
-      <option value='other'>...</option>
-    </Input>
-    <Input type='textarea' label='Text Area' placeholder='textarea' />
-    <ButtonInput value='Button Input' />
-    <ButtonInput type='reset' value='Reset Button' />
-    <ButtonInput type='submit' value='Submit Button' />
-  </form>
-
-
-
-
-
-
-
-
-
-
-
-
+          </Nav>
+        </Navbar>
       </div>
+
+
+    
+    <div>
+  </div>
+  
+   
+<Grid>
+    <Row className='show-grid'>
+      <Col xs={6} md={6}><code> 
+        { <Panel header='Code Editor'>
+                Panel content
+              </Panel>}
+
+
+      </code></Col>
+      <Col xs={6} md={6}><code>{
+              <Panel header='Chart'>
+                Panel content
+              </Panel>
+      } </code></Col>
+    </Row>
+
+
+  </Grid>
+
+    
+  
+ </div>
+
+
+
+
+
+     
     )
   }
 });
