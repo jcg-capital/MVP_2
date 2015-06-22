@@ -13,6 +13,8 @@ var Errorpage      = React.createClass({render:function(){return <h1>ErrorPage</
 // *******************************//
 // BootStrap related elements
 // *******************************//
+var Nav = BootStrap.Nav
+var Navbar = BootStrap.Navbar
 var BootStrap      = require('./assets/bootstrap');
 var ButtonToolbar  = BootStrap.ButtonToolbar;
 var Button         = BootStrap.Button;
@@ -58,17 +60,26 @@ var App = React.createClass({
           <MenuBar config={MenuItems.config} />
         </div>
 
-{/* Standard button */}
-        <ButtonToolbar>
-          <Button>Default</Button>
-          <Button bsStyle='primary'>Primary</Button>
-          <Button bsStyle='success'>Success</Button>
-          <Button bsStyle='info'>Info</Button>
-          <Button bsStyle='warning'>Warning</Button>
-          <Button bsStyle='danger'>Danger</Button>
-          {/* Deemphasize a button by making it look like a link while maintaining button behavior */}
-          <Button bsStyle='link'>Link</Button>
-        </ButtonToolbar>
+  {/* NavBar */}
+        <Navbar brand={<a href="#">JCG-Capital</a>}>
+          <Nav>
+     
+
+          <DropdownButton bsStyle='primary' eventKey={3} title='File'>          
+              <MenuItem eventKey='1'>Action</MenuItem>
+              <MenuItem eventKey='2'>Another action</MenuItem>
+          </DropdownButton>
+          <DropdownButton bsStyle='primary' eventKey={3} title='Edit'>          
+              <MenuItem eventKey='1'>Action</MenuItem>
+              <MenuItem eventKey='2'>Another action</MenuItem>
+          </DropdownButton>
+          <DropdownButton bsStyle='primary' eventKey={3} title='Preferences'>          
+              <MenuItem eventKey='1'>Action</MenuItem>
+              <MenuItem eventKey='2'>Another action</MenuItem>
+          </DropdownButton>
+        </Nav>
+   </Navbar>
+
 
 {/* Button Grouping */}
          <ButtonToolbar>
