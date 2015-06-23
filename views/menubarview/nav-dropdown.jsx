@@ -1,3 +1,6 @@
+// var BootStrap      = require('./assets/bootstrap');
+var DropdownButton = BootStrap.DropdownButton;
+
 var NavDropdown = React.createClass({
   handleSelect(selectedKey) {
     alert('selected ' + selectedKey);
@@ -5,20 +8,28 @@ var NavDropdown = React.createClass({
 
   render() {
     return (
-      <Nav bsStyle='tabs' activeKey={1} onSelect={this.handleSelect}>
-        <NavItem eventKey={1} href='/home'>NavItem 1 content</NavItem>
-        <NavItem eventKey={2} title='Item'>NavItem 2 content</NavItem>
-        <NavItem eventKey={3} disabled={true}>NavItem 3 content</NavItem>
-        <DropdownButton eventKey={4} title='Dropdown' navItem={true}>
-          <MenuItem eventKey='4.1'>Action</MenuItem>
-          <MenuItem eventKey='4.2'>Another action</MenuItem>
-          <MenuItem eventKey='4.3'>Something else here</MenuItem>
-          <MenuItem divider />
-          <MenuItem eventKey='4.4'>Separated link</MenuItem>
-        </DropdownButton>
-      </Nav>
+        <div>
+        
+       
+              <DropdownButton bsStyle='primary' eventKey={3} title='File'>          
+                  <MenuItem eventKey='1'>Action</MenuItem>
+                  <MenuItem eventKey='2'>Another action</MenuItem>
+              </DropdownButton>
+              <DropdownButton bsStyle='primary' eventKey={3} title='Edit'>          
+                  <MenuItem eventKey='1'>Action</MenuItem>
+                  <MenuItem eventKey='2'>Another action</MenuItem>
+              </DropdownButton>
+              <DropdownButton bsStyle='primary' eventKey={3} title='Preferences'>          
+                  <MenuItem eventKey='1'>Action</MenuItem>
+                  <MenuItem eventKey='2'>Another action</MenuItem>
+              </DropdownButton>
+         
+    
+      </div>
     );
   }
 });
+
+module.exports = NavDropdown
 
 // React.render(<NavDropdown />, document.getElementById('nav-dropdown'));

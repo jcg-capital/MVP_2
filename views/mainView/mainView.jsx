@@ -1,22 +1,23 @@
 /** @jsx React.DOM */
 'use strict';
-//var React          = require('react');
+// var React          = require('react');
 var MenuBar        = require('./menubarview/MenuBarView.js');
 var MenuItems      = require('./menubarview/MenuItems.js');
 var Chart          = require('./graphview/chart');
 var ChartOptions   = require('./graphview/chartoptions');
 var ContainedModal = require('./mainView/containedmodal.js');
+// var NavDropdown    = require('./menubarview/nav-dropdown.js')
+var Editor         = require('./codeeditorview/CodeMirror');
 
-var Editor         = require('./codeeditorview/CodeMirror')
 // TODO: complete some extra pages
-var Home           = React.createClass({render:function(){return <h1>Home</h1>}})
+var Home           = React.createClass({render:function(){return <h1>Home</h1>}});
 var Errorpage      = React.createClass({render:function(){return <h1>ErrorPage</h1>}});
 
 // *******************************//
 // BootStrap related elements
 // *******************************//l
 
-
+var BootStrap      = require('./assets/bootstrap');
 var ModalTrigger   = BootStrap.ModalTrigger;
 var Col            = BootStrap.Col;
 var Row            = BootStrap.Row;
@@ -24,7 +25,7 @@ var Grids          = BootStrap.Grids;
 var Grid           = BootStrap.Grid;
 var Nav            = BootStrap.Nav;
 var Navbar         = BootStrap.Navbar;
-var BootStrap      = require('./assets/bootstrap');
+
 var ButtonToolbar  = BootStrap.ButtonToolbar;
 var Button         = BootStrap.Button;
 var ButtonGroup    = BootStrap.ButtonGroup;
@@ -66,10 +67,10 @@ var App = React.createClass({
 
 
      
-     <div>
-        <Navbar brand={<a href="#">JCG-Capital</a>}>
-          <Nav>
-              <DropdownButton bsStyle='primary' eventKey={3} title='File'>          
+    
+        <Nav>
+          <Navbar brand={<a href="#">JCG-Capital</a>}>
+                    <DropdownButton bsStyle='primary' eventKey={3} title='File'>          
                   <MenuItem eventKey='1'>Action</MenuItem>
                   <MenuItem eventKey='2'>Another action</MenuItem>
               </DropdownButton>
@@ -81,19 +82,15 @@ var App = React.createClass({
                   <MenuItem eventKey='1'>Action</MenuItem>
                   <MenuItem eventKey='2'>Another action</MenuItem>
               </DropdownButton>
-          </Nav>
-        </Navbar>
-      </div>
+          </Navbar>
+           </Nav>
+    
 
      <div className="container">
         <div id='jcgCapitalChart'>
           <Chart chartModel={ChartOptions.chartModel} seriesModel={ChartOptions.seriesModel} />
         </div>
       </div>
-
-
-
-
   
    
 <Grid>
@@ -113,11 +110,37 @@ var App = React.createClass({
     </Row>
   </Grid>
 
-  <div id="modal">
-    <ModalTriggerOne />
-  </div>
+  <div id='modal'></div>
+
+var ContainedModal = React.createClass({
+  render () {
+    return (
+      <Modal {...this.props} title='Contained Modal' animation>
+        <div className='modal-body'>
+          Elit est explicabo ipsum eaque dolorem blanditiis doloribus sed id ipsam, beatae, rem fuga id earum? Inventore et facilis obcaecati.
+        </div>
+        <div className='modal-footer'>
+          <Button onClick={this.props.onRequestHide}>Close</Button>
+        </div>
+      </Modal>
+    );
+  }
+});
+
+var ModalTriggerOne = React.createClass({
+  render() {
+    return (
+      <div className='modal-container' style={{height: 200}}>
+        <ModalTrigger modal={<ContainedModal container={this} />} container={this}>
+          <Button bsStyle='primary' bsSize='large'>Launch contained modal</Button>
+        </ModalTrigger>
+      </div>
+    );
+  }
+});
 
 
+React.render(<ModalTriggerOne />, document.getElementById('modal'));
 
 </div>
      

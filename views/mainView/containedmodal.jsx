@@ -1,5 +1,26 @@
 /** @jsx React.DOM */
 
+
+// var BootStrap      = require('./assets/bootstrap');
+// var ModalTrigger   = BootStrap.ModalTrigger;
+// var Col            = BootStrap.Col;
+// var Row            = BootStrap.Row;
+// var Grids          = BootStrap.Grids;
+// var Grid           = BootStrap.Grid;
+// var Nav            = BootStrap.Nav;
+// var Navbar         = BootStrap.Navbar;
+// var ButtonToolbar  = BootStrap.ButtonToolbar;
+// var Button         = BootStrap.Button;
+// var ButtonGroup    = BootStrap.ButtonGroup;
+// var DropdownButton = BootStrap.DropdownButton;
+// var MenuItem       = BootStrap.MenuItem;
+// var Accordion      = BootStrap.Accordion;
+// var Panel          = BootStrap.Panel;
+// var Modal          = BootStrap.Modal;
+// var Input          = BootStrap.Input;
+// var ButtonInput    = BootStrap.ButtonInput;
+
+
 var ContainedModal = React.createClass({
   render () {
     return (
