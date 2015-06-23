@@ -1,7 +1,8 @@
 /** @jsx React.DOM */
-
+'use strict';
 var Chart = React.createClass({
-  displayName: "Chart",
+  displayName: 'Chart',
+
   initializeChart: function() {
     var chartModel = this.props.chartModel;
     var seriesModel = this.props.seriesModel;
@@ -14,7 +15,7 @@ var Chart = React.createClass({
       series: {$set: seriesModel}
     });
 
-    var chartInstance = new Highcharts.Chart(chartOptions);
+    var chartInstance = new Highcharts.StockChart(chartOptions);
     this.setState({
       chartInstance: chartInstance
     });
@@ -22,7 +23,7 @@ var Chart = React.createClass({
 
   render: function() {
     return (
-      React.createElement("div", {ref: "myChart"})
+      React.createElement('div', {ref: 'myChart'})
     );
   },
 

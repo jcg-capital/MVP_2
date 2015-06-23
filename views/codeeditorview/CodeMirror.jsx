@@ -1,10 +1,5 @@
 'use strict';
 var Codemirror = require('react-codemirror');
-var options = {
-  mode: 'javascript',
-  theme: 'cm-s-monokai',
-  lineNumbers: true,
-}
 var Editor = React.createClass({
     getInitialState: function() {
         return {
@@ -20,16 +15,12 @@ var Editor = React.createClass({
         });
     },
     render: function() {
-        var options = {
-            lineNumbers: true
-        };
-        return (
-          <div>
-            <Codemirror value={this.state.code} onChange={this.updateCode} options={options} />
-          </div>
-          )
+      var options = this.props.config
+      return (
+          <Codemirror value={this.state.code} onChange={this.updateCode} options={options} />
+      )
     }
-});
+  });
 
 // React.render(<App />, document.getElementById('app'));
 module.exports = Editor

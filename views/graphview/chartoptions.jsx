@@ -11,7 +11,6 @@ var seriesModel = [{
 
 var chartModel = {
    chart: {
-       renderTo: 'container',
        type: 'line',
    },
    title: {

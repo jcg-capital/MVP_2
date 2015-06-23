@@ -5,7 +5,7 @@ var MenuBar        = require('./menubarview/MenuBarView.js');
 var MenuItems      = require('./menubarview/MenuItems.js');
 var Chart          = require('./graphview/chart');
 var ChartOptions   = require('./graphview/chartoptions');
-//var Editor         = require('./codeeditorview/CodeMirror')
+var Editor         = require('./codeeditorview/CodeMirror')
 // TODO: complete some extra pages
 var Home           = React.createClass({render:function(){return <h1>Home</h1>}})
 var Errorpage      = React.createClass({render:function(){return <h1>ErrorPage</h1>}});
@@ -46,17 +46,23 @@ var App = React.createClass({
       'position': 'relative',
       'bottom': '0px',
     },
+    editorConfig: {
+        'mode': 'javascript',
+        'theme': 'cm-s-monokai',
+        'lineNumbers': true,
+    },
   },
   render: function(){
     console.log('Inside App');
     return (
       <div>
         <div id='jcgCapitalChart'>
-          <Chart chartModel={ChartOptions.chartModel} seriesModel={ChartOptions.seriesModel} />
+          <Chart chartModel={ ChartOptions.chartModel } seriesModel={ChartOptions.seriesModel} />
         </div>
         <div id='jcgCapitalMenu'>
-          <MenuBar config={MenuItems.config} />
+          <MenuBar config={ MenuItems.config } />
         </div>
+        <Editor config={ this.items.editorConfig }/>
 
 {/* Standard button */}
         <ButtonToolbar>
